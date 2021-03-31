@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "description": "Projeto desenvolvido durante a maratona JS do Emerson Broga",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.12.2"
+  }
 }
