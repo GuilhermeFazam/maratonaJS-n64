@@ -1,0 +1,7 @@
+{
+  "name": "api.maratonajs.net",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido durante a maratona JS do Emerson Broga",
+  "main": "index.js",
+  "license": "MIT"
+}
