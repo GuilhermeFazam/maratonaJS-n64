@@ -1,8 +1,8 @@
-const fs = require("fs");
-const dotenv = require("dotenv");
-const { Schema, model, connect } = require("mongoose");
+import { config } from "dotenv";
+import { readFile } from "fs";
+import { connect, model, Schema } from "mongoose";
 
-dotenv.config();
+config();
 
 const GameSchema = new Schema({ title: String }, { strict: false });
 
@@ -18,7 +18,7 @@ const parseJSON = (data) => {
 
 const connectToDb = () => {
     const options = {
-        useUnifielTopology: true,
+        useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
@@ -28,7 +28,7 @@ const connectToDb = () => {
 
 const readGamesFromFile = (filename) => {
     const promiseCallback = (resolve, reject) => {
-        fs.readFile(filename, (err, data) => {
+        readFile(filename, (err, data) => {
             if (err) {
                 return reject(err);
             }
@@ -51,11 +51,6 @@ const storeGame = (data) => {
 const importGame = async () => {
     await connectToDb();
     const games = await readGamesFromFile("games.json");
-
-    // games.map((game) => {
-
-    //     console.log(game.title);
-    // });
 
     for (let i = 0; i < games.length; i++) {
         const game = games[i];
